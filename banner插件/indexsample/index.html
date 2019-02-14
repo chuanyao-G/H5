@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<link rel="stylesheet" href="css/swiper.min.css">
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+#header {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:999;
+	width:100%;
+	height:43px;
+	overflow:hidden;
+	background:#fdfdfc;
+	font:12px/40px hiragino sans gb,microsoft yahei,simsun;
+	box-shadow:3px 3px 3px rgba(0,0,0,0.2);
+}
+#top-line {
+	width:100%;
+	height:3px;
+	line-height:0;
+	font-size:0;
+	overflow:hidden;
+	text-align:center;
+	z-index:1;
+	background-color:#0fa6ea;
+	background:-webkit-linear-gradient(left,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba(15,166,234,1) 60%,rgba(15,166,234,1) 100%);
+	background:-moz-linear-gradient(left,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba(15,166,234,1) 60%,rgba(15,166,234,1) 100%);
+	background:-ms-linear-gradient(left,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba(15,166,234,1) 60%,rgba(15,166,234,1) 100%);
+	background:linear-gradient(left,rgba(15,166,234,1) 0,rgba(89,204,24,1) 10%,rgba(15,166,234,1) 60%,rgba(15,166,234,1) 100%);
+}
+#header .swiper-slide {
+	padding:0 20px;
+	width:auto;
+}
+#banner {
+	width:100%;
+	overflow:hidden;
+	margin-top:43px;
+	position:relative;
+}
+#banner .swiper-slide {
+	position:relative;
+	text-align:center;
+}
+#banner img {
+	max-width:100%;
+	display:block;
+}
+#banner h2 {
+	text-align:center;
+	font-size:1em;
+	height:42px;
+	line-height:42px;
+	color:#fafafa;
+	position:absolute;
+	left:0;
+	bottom:0;
+	right:0;
+	font-weight:normal;
+	text-shadow:1px 1px 1px #000;
+	/* background-color:rgba(21,20,20,0.5);*/
+    background-color:rgba(0,0,0,0);
+	background:-moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
+	background:-webkit-gradient(linear,top,from(rgba(0,0,0,0)),to(rgba(0,0,0,0.7)));
+	background:-webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
+	background:-o-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
+}
+#banner .pagination {
+	position:absolute;
+	z-index:20;
+	bottom:3px;
+	text-align:center;
+	right:0;
+}
+#banner .swiper-pagination-bullet {
+	display:inline-block;
+	width:5px;
+	height:5px;
+	border-radius:5px;
+	background:#fff;
+	margin:0 2px;
+	opacity:0.8;
+	cursor:pointer;
+}
+#banner .swiper-pagination-bullet-active {
+	background:#ff6600;
+}
+#announcement {
+	height:2em;
+	background:#f5f8fc;
+	border:1px solid #d2e1f1;
+	margin:0.5em;
+}
+#announcement a {
+	color:#294c7f;
+	text-decoration:none;
+	display:block;
+	line-height:2;
+	height:2em;
+	text-indent:0.5em;
+	overflow:hidden;
+}
+#tabs-container {
+	height:400px;
+}
+.tabs {
+	border-top:2px solid #9ac7ed;
+	background:url(images/headbg.png) no-repeat left top #f9fafa;
+	background-size:auto 100%;
+	width:100%;
+	height:38px;
+	overflow:hidden;
+}
+.tabs a {
+	font-weight:normal;
+	text-align:center;
+	float:left;
+	width:64px;
+	height:38px;
+	line-height:38px;
+	color:#2a70be;
+	text-decoration:none;
+}
+.tabs a.active {
+	border-top:2px solid #2a70be;
+	margin-top:-2px;
+	background-image:url(images/tab_ui.png);
+	background-repeat:no-repeat;
+	-webkit-background-size:64px 39px;
+	-moz-background-size:64px 39px;
+	-o-background-size:64px 39px;
+	background-size:64px 39px;
+	background-position:left top;
+	color:#c14545;
+}
+.news-list {
+	padding:0 10px;
+}
+.news-list li {
+	overflow:hidden;
+	border-bottom:1px solid #eceef0;
+	box-shadow:0 1px 1px #fff;
+	font-weight:normal;
+	height:35px;
+	line-height:35px;
+	font-size:80%;
+}
+
+</style>
+</head>
+<body>
+<div id="header">
+  <div id="top-line"></div>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">新闻</div>
+    <div class="swiper-slide">财经</div>
+    <div class="swiper-slide">娱乐</div>
+    <div class="swiper-slide">体育</div>
+    <div class="swiper-slide">订阅</div>
+    <div class="swiper-slide">微博</div>
+    <div class="swiper-slide">空间</div>
+    <div class="swiper-slide">书城</div></div>
+</div>
+<div id="banner" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="images/0.jpg?v=sf" />
+      <h2>贾乃亮发长文默认李小璐出轨</h2></div>
+    <div class="swiper-slide">
+      <img src="images/1.jpg?v=wf" />
+      <h2>阿里程序员穿特步相亲被拒绝</h2></div>
+  </div>
+  <div class="pagination"></div>
+</div>
+<div id="announcement" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <a href="#">女博士相亲角被嘲？其实是有“预谋”的行为艺术</a></div>
+    <div class="swiper-slide">
+      <a href="#">你为什么还没过上你想要的生活</a></div>
+    <div class="swiper-slide">
+      <a href="#">莲花粉橙色也太美了！连直男都爱的仙女色！</a></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <a href="#" class="active">新闻</a>
+  <a href="#">社会</a>
+  <a href="#">娱乐</a></div>
+<div id="tabs-container" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <ul class="news-list">
+        <li>女子强行阻拦高铁发车 称其丈夫没上车</li>
+        <li>小马奔腾创始人妻子被判赔2亿债务</li>
+        <li>杭州女子将200平荒地改造成“秘密花园”</li>
+        <li>“紫光阁饭店”事件，乌龙背后是热搜的生意</li>
+        <li>最美乘务员冒雪挨个扶旅客下火车</li>
+        <li>五月天周杰伦再度合体</li>
+        <li>张馨予被赞模特身材</li>
+        <li>惊呆，杨紫的脸现在跟脖子一样宽了！</li>
+        <li>睡姿暴露你偷情指数</li>
+        <li>济南小伙儿自掏腰包，为陌生农民工加菜</li></ul>
+    </div>
+    <div class="swiper-slide">
+      <ul class="news-list">
+        <li>女子街边卖早餐卖蓝色油条生意火爆</li>
+        <li>保定励志哥！坐着轮椅唱歌成网红</li>
+        <li>电影院保安恋上女研究生</li>
+        <li>19岁女生保送北大直博</li>
+        <li>男子越狱期间强奸女友12岁的女儿</li>
+        <li>8旬爷爷因三个孩子都不赡养</li>
+        <li>7座面包车塞进20名学生</li>
+        <li>老人做家务时羽绒服突然“爆炸”</li>
+        <li>直播间里，用歌舞抗癌的70岁“网红”</li>
+        <li>PG_ONE粉丝买热搜"紫光阁地沟油"</li></ul>
+    </div>
+    <div class="swiper-slide">
+      <ul class="news-list">
+        <li>“绿帽门”后贾乃亮深夜买醉</li>
+        <li>姚笛大方挥手无名指戒指抢眼</li>
+        <li>汪小菲被大S减肥成果吓到</li>
+        <li>Baby和秀智同穿18万仙女裙</li>
+        <li>易烊千玺得罪粉丝？接机时粉丝不想理他</li>
+        <li>Tara成员：送了跑车还有90亿</li>
+        <li>蒋欣在节目上的表情超有戏</li>
+        <li>李小璐最新写真曝光，大走稳重的知性风</li>
+        <li>马思纯和欧豪穿同款秀恩爱</li>
+        <li>第90届奥斯卡颁奖礼发海报</li></ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    var navSwiper = new Swiper('#header', {
+        freeMode: true,
+        slidesPerView: 'auto',
+        freeModeSticky: true,
+    });
+	
+    var bannerSwiper = new Swiper('#banner', {
+        autoplay: 5000,
+        visibilityFullFit: true,
+        loop: true,
+        pagination: {
+            el: '#banner .pagination',
+        }
+    });
+
+    var announcementSwiper = new Swiper('#announcement', {
+        direction: 'vertical',
+		loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }
+    })
+
+    var tabsSwiper = new Swiper('#tabs-container', {
+        speed: 500,
+        on: {
+            slideChangeTransitionStart: function() {
+                $(".tabs .active").removeClass('active');
+                $(".tabs a").eq(this.activeIndex).addClass('active');
+            }
+        }
+    })
+    $(".tabs a").on('click', function(e) {
+        e.preventDefault()
+        $(".tabs .active").removeClass('active')
+        $(this).addClass('active')
+        tabsSwiper.slideTo($(this).index())
+    })
+}
+</script>
+</body>
+</html>
