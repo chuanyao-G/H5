@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>注册</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+     
+      
+       <div class="container ">
+            <div class="row ">
+                  <div class="col-md-6 col-md-offset-3">
+                  <h4>注册</h4>
+                  <hr>
+<!-- form - start----------------------------->
+      <form id="register_form">
+            <div class="form-group">
+                  <label for="username">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>      
+                        用户名
+                  </label>
+                  <input type="text" class="form-control" id="username" placeholder="username" name="username">
+            </div>
+            <div class="form-group">
+                  <label for="password">
+                        <span class="
+                        glyphicon glyphicon-piggy-bank" aria-hidden="true"> </span>      
+                        密码
+                  </label>
+                  <input type="text" class="form-control" id="password" placeholder="password" name="password">
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">确认注册</button>
+          </form>
+
+
+
+<!-- form - end------------------------------->
+                  </div>
+            </div>
+       </div>
+       <script>
+
+             // 阻止默认事件;
+            //  var register_form = document.getElementById("register_form");
+            //  register_form.onsubmit = function(evt){
+            //       var e = evt || window.event;
+            //       e.preventDefault();
+            //  }
+            //  // 点击发送数据;
+            //  var submit = document.getElementById("submit");
+            //  var username = document.getElementById("username");
+            //  var password = document.getElementById("password");
+
+            //  submit.addEventListener("click",register);
+            //  function register(){
+            //       var usr_value = username.value;
+            //       var pwd_value = password.value;
+
+            //       // console.log(usr_value,pwd_value);
+            //       // 使用ajax技术进行数据的发送;
+            //       // GET || POST
+                  
+            //       //1. 目标 -> 用GET发送数据;
+
+            //       // get数据发送规则;
+            //       // url + ? + data
+            //       // data key=value
+            //       // key=value&key2=value2;
+
+            //       var url = "http://localhost/0109/interface/register.php";
+            //       url += `?username=${usr_value}&password=${pwd_value}`;
+
+            //       // var xhr = new XMLHttpRequest();
+            //       // xhr.open("GET",url);
+            //       // xhr.send(null);
+            //       // xhr.onreadystatechange = function(){
+            //       //       if(xhr.readyState === 4 && xhr.status === 200){
+            //       //             // console.log(xhr.response);
+            //       //             console.log(JSON.parse(xhr.response))
+            //       //       }
+            //       // }
+            //       // ajaxGet(url,function(res){
+            //       //       console.log(res);
+            //       // })
+
+            //       ajaxGet(url)
+            //       .then(function(res){
+            //             console.log(res);
+            //       })
+            //  }
+
+            //  // 但是使用回调函数我们就面临回调地狱;
+            //  // 使用promise =>  就没有回调函数;
+            //  function ajaxGet(url){
+            //       return new Promise(function(resolve,reject){
+            //             var xhr = new XMLHttpRequest();
+            //             xhr.open("GET",url);
+            //             xhr.send(null);
+            //             xhr.onreadystatechange = function(){
+            //                   if(xhr.readyState === 4 && xhr.status === 200){
+            //                         resolve(xhr.response);
+            //                   }
+            //             }
+            //       })
+            //  }
+
+
+
+            //////////////////////
+
+            var register_form=document.getElementById("register_form");
+            register_form.onsubmit=function(evt){
+                  var e=evt || window.event;
+                  e.preventDefault(); 
+            }
+            
+            var submit=document.getElementById("submit");
+            var username=document.getElementById("username");
+            var password=document.getElementById("password");
+            submit.addEventListener("click",register);
+            function register(){
+                  var usr_value=username.value;
+                  var pwd_value=password.value;
+
+                  var url="http://localhost/0109/interface/register.php";
+                  url += `?username=${usr_value}&password=${pwd_value}`;
+
+                  // var xhr=new XMLHttpRequest();
+                  // xhr.open("GET",url);
+                  // xhr.send(null);
+                  // xhr.onreadystatechange=function(){
+                  //       if(xhr.readyState===4 && xhr.status===200){
+                  //             console.log(JSON.parse(xhr.response)
+                  //       }
+                  // }
+
+                  ajaxGet(url)
+                  .then(function(res){
+                        console.log(res);
+                  })
+            }
+
+            function ajaxGet(url){
+                  return new Promise(function(resolve,reject){
+                  var xhr=new XMLHttpRequest();
+                  xhr.open("GET",url);
+                  xhr.send(null);
+                  xhr.onreadystatechange=function(){
+                        if(xhr.readyState===4  && xhr.status===200){
+                              console.log(xhr.response)
+                              }
+                        }
+                  })
+            }
+
+       </script>
+</body>
+</html>

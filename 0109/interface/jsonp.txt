@@ -1,0 +1,5 @@
+// 这是一个纯文本;
+
+//hello world;
+
+fn("hello world");

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>登陆</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+       <div class="container ">
+            <div class="row ">
+                  <div class="col-md-6 col-md-offset-3">
+                  <h4>登陆</h4>
+                  <hr>
+<!-- form - start----------------------------->
+      <form id="register_form">
+            <div class="form-group">
+                  <label for="username">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>      
+                        用户名
+                  </label>
+                  <input type="text" class="form-control" id="username" placeholder="username" name="username">
+            </div>
+            <div class="form-group">
+                  <label for="password">
+                        <span class="
+                        glyphicon glyphicon-piggy-bank" aria-hidden="true"> </span>      
+                        密码
+                  </label>
+                  <input type="text" class="form-control" id="password" placeholder="password" name="password">
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">确认登陆</button>
+          </form>
+<!-- form - end------------------------------->
+                  </div>
+            </div>
+       </div>
+
+
+       <script src="./JavaScript.js"></script>
+
+
+       <script>
+
+
+
+
+var  register_form=document.getElementById("register_form");
+                    var  username=document.getElementById("username");
+                    var  password=document.getElementById("password");
+                    var   submit=document.getElementById("submit");
+                    document.onsubmit=function(evt){
+                    var e =evt||window.event;
+                         e.preventDefault();
+                     }
+                         
+                    submit.addEventListener("click",login)
+
+                    function  login(){
+                        var  use_value=username.value;
+                        var  pass_value=password.value;
+                        var  url="http://localhost/DAY/0109/interface/login.php";
+                         var  data={
+                             username:use_value,
+                             password:pass_value
+                         }
+
+                        var xhr= new XMLHttpRequest();
+                         xhr.open("POST",url);
+                         xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                         var  data_str="";
+                         for(var attr in data){
+                               if(data_str.length!==0){
+                                   data_str+="&";
+                               }
+                            data_str+=attr+"="+data[attr];
+                         }
+                         xhr.send(data_str);
+                         xhr.onreadystatechange=function(){
+                             if(xhr.readyState===4&&xhr.status===200){
+                                console.log (xhr.response);
+                                location.href = "https://www.baidu.com/";
+
+                             }
+                         }
+                    }
+
+            //  // 阻止默认事件;
+            //  var register_form = document.getElementById("register_form");
+            //  register_form.onsubmit = function(evt){
+            //       var e = evt || window.event;
+            //       e.preventDefault();
+            //  }
+            //  // 点击发送数据;
+            //  var submit = document.getElementById("submit");
+            //  submit.addEventListener("click",login);
+
+            //  var username = document.getElementById("username");
+            //  var password = document.getElementById("password");
+
+            //  function login(){
+            //       // 1. 获取 input 之中的值;
+            //       var usr_str = username.value;
+            //       var pwd_str = password.value;
+            //       var data = {
+            //             username : usr_str,
+            //             password : pwd_str
+            //       }
+            //       ajaxPost("http://localhost/DAY/0109/interface/login.php",data)
+            //       .then(function(res){  // res => xhr.response;
+            //             console.log(res);
+            //       })
+            //  }
+
+            //  function ajaxPost(url,data){
+            //       return new Promise(function(resolve,reject){
+            //             var xhr = new XMLHttpRequest();
+            //             xhr.open("POST",url);
+            //             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+            //             var data_str = "";
+            //             for(var attr in data){
+            //                   if(data_str.length !== 0){
+            //                       data_str += "&";
+            //                   }
+            //                   data_str += attr + "=" + data[attr];
+            //             }
+            //             xhr.send(data_str);
+            //             xhr.onreadystatechange = function(){
+            //                   if(xhr.readyState === 4 && xhr.status === 200){
+            //                         resolve(xhr.response);
+            //                   }
+            //             }
+
+            //       })
+            //  }
+       </script>
+</body>
+</html>

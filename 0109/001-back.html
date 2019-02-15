@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+         
+    </div>
+    <script>
+//       var box = document.getElementById("box");
+//       var width_promise = new Promise(function(resolve,reject){
+//           animate(box,"width",200,function(){
+//               resolve();
+//           })
+//       })
+//       width_promise.then(function(){
+//       //     var height_promise = new Promise(function(resolve,reject){
+//       //         animate(box,"height",200,function(){
+//       //             resolve();
+//       //         })
+//       //     })
+//       //     return height_promise;
+
+//           return new Promise(function(resolve,reject){
+//               animate(box,"height",200,function(){
+//                   resolve();
+//               })
+//           })
+//       })
+//      .then(function(){
+//           var left_promise = new Promise(function(resolve,reject){
+//                   animate(box,"left",200,function(){
+//                         resolve();
+//                   })
+//             })
+//             return left_promise;
+//      })
+//       .then(function(){
+//             animate(box,"top",200)
+            
+//       })
+
+
+      var promise = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                  resolve();
+            },0)
+      });
+      
+      var pro = promise.then(function(){
+            console.log("成功");
+            return new Promise(function(){
+
+            })
+      })
+      pro.then(function(){
+            console.log("第二个成功回调函数")
+      })
+
+      console.log(pro);
+
+      // pro 是 promise对象状态变为成功之后，then的返回值;
+
+      // pro 是状态改变为resolve的一个promise对象;
+
+      // 1. 如果在then调用之后，then的回调函数里没有返回promise;
+
+      // then 函数的返回值 : 
+      // 1. 没有return 默认返回then所属的  promise对象;
+      // 2. 有 return promise时返回的是    promise对象;
+
+    </script>
+</body>
+</html>
